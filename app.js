@@ -11,12 +11,12 @@ console.log('-------Calculadora--------');
 console.log('+ = adição')
 console.log('- = subtração')
 console.log('* = multiplicação')
-console.log('/ = divisão \n')
-
+console.log('/ = divisão')
+console.log('--------------------------\n')
 //import da biblioteca para entrada de dados
 var readline = require('readline');
 
-//criamos um objeto para manipular a entrada de daos via teclado
+//criação um objeto para manipular a entrada de daos via teclado
 var entradaDados = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -37,17 +37,35 @@ entradaDados.question('Digite o primeiro número: \n', function (numero1) {
         entradaDados.question('Digite o segundo número: \n', function (numero2) {
 
             let segundoNumero = Number(numero2);
-            let calculo = 0;
+            let calculo = operacaoMatematica;
+
+            let calculoAdicao = primeiroNumero + segundoNumero;
+            let calculoSubtracao = primeiroNumero - segundoNumero;
+            let calculoMultiplicacao = primeiroNumero * segundoNumero;
+            let calculoDivisao = primeiroNumero / segundoNumero;
+
+            if(operacaoMatematica == '+'){
+                console.log('Resultado:',calculoAdicao)
+            }
+            if(operacaoMatematica == '-'){
+                console.log('Resultado',calculoSubtracao)
+            }
+            if(operacaoMatematica == '*'){
+                console.log('Resultado:',calculoMultiplicacao)
+            }
+            if(operacaoMatematica == '/'){
+                console.log('Resultado',calculoDivisao)
+            }
 
             //Validação para tratar entradas vazias
             if (primeiroNumero == '' || operacaoMatematica == '' || segundoNumero == '') {
                 console.log('ERRO: É necessário digitar algum valor nas entradas');
             } else if (isNaN(primeiroNumero) || isNaN(segundoNumero)) {
                 console.log('ERRO: É necessário que dois dados sejam números');
-            } else if(operacaoMatematica != '+' ||operacaoMatematica != '-' ||operacaoMatematica != '*' ||operacaoMatematica != '/' ){
-                console.log('ERRO: essa operação não está disponível');
+            //} else if(operacaoMatematica != '+' ||operacaoMatematica != '-' ||operacaoMatematica != '*' ||operacaoMatematica != '/' ){
+             //   console.log('ERRO: essa operação não está disponível');
 
-            }else{
+            }else{                
                 console.log(calculo);
             }
         })
